@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifreli Yönlendirme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Lütfen Şifreyi Girin</h2>
+        <input type="password" id="passwordInput" placeholder="Şifreyi buraya girin">
+        <button onclick="checkPassword()">Gönder</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const correctPassword = "xss"; // Burayı istediğiniz şifreyle değiştirin
+            const enteredPassword = document.getElementById("passwordInput").value;
+            const messageElement = document.getElementById("message");
+            const redirectLink = "https://mega.nz/folder/yEVG0LSS#iGO7_YMN1LMau10nvEqr8A"; // Yönlendirilecek link
+
+            if (enteredPassword === correctPassword) {
+                window.location.href = redirectLink;
+            } else {
+                messageElement.textContent = "Hatalı şifre! Lütfen tekrar deneyin.";
+            }
+        }
+    </script>
+</body>
+</html>
